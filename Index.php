@@ -9,7 +9,7 @@
 <ul class="dropdown">
     <li class="drop"><a href="Familia/familia.php">Crea familia</a></li>
     <li class="drop"><a href="Grupos/funcionarios.php">Funcionarios</a></li>
-    <li class="drop"><a href="Funcionarios/academico.php">Form 2</a></li>
+    <li class="drop"><a href="Funcionarios/academico.php">Academico</a></li>
     <li><a href="#">Salir</a></li>
 </ul>
 

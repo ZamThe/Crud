@@ -2,10 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <title>Formulario Información Académica</title>
     <!-- Agrega tus estilos CSS si es necesario -->
 </head>
 <body>
+<ul class="dropdown">
+    <li class="drop"><a href="#">Crea familia</a></li>
+    <li class="drop"><a href="../Grupos/funcionarios.php">Funcionarios</a></li>
+    <li class="drop"><a href="Funcionarios/academico.php">Form 2</a></li>
+    <li><a href="#">Salir</a></li>
+</ul>   
 
 <h2>Formulario Información Académica</h2>
 
