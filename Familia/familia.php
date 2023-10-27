@@ -1,54 +1,69 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulario de Grupos Familiares</title>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-</head>
-<ul class="dropdown">
-<li class="drop"><a href="../Familia/familia.php">Crea familia</a></li>
-        	<li class="drop"><a href="../Grupos/funcionarios.php">Funcionarios </a></li>
-        	
-        	<li><a href="../index.php">Salir</a>
-        	</li>
-        	</li>
-        </ul>
-</nav> 
-<body>
-    <h2>Formulario de Grupos Familiares</h2>
-    <div id="login-form-wrap">
-    <form action="insertar_grupo_familiar.php" method="post">
-        ID Grupo Familiar: <input type="text" name="IDGrupoFamiliar" required><br>
-        ID Funcionario: <input type="text" name="IDFuncionario" required><br>
-        Rol: <input type="text" name="Rol" required><br>
-        <input type="submit" value="Agregar Grupo Familiar">
-    </form>
-</div>
-</body>
-</html>
 <?php
-include '../Conexion.php';
+include '../conexion.php';
 
+function insertarGrupoFamiliar($funcionario_id, $miembro_nombre, $miembro_apellido, $rol) {
+    global $conn;
 
-// Consulta para obtener funcionarios con su grupo familiar
-$sql = "SELECT funcionarios.*, gruposfamiliares.IDGrupoFamiliar, gruposfamiliares.Rol
-        FROM funcionarios
-        LEFT JOIN gruposfamiliares ON funcionarios.IDFuncionario = gruposfamiliares.IDFuncionario";
+    // Verificar si el funcionario_id existe en la tabla funcionarios
+    $verificarExistencia = "SELECT * FROM funcionarios WHERE id = '$funcionario_id'";
+    $result = $conn->query($verificarExistencia);
 
-$result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // El funcionario_id existe, podemos proceder con la inserción en gruposfamiliares
+        $sql = "INSERT INTO gruposfamiliares (funcionario_id, miembro_nombre, miembro_apellido, rol)
+                VALUES ('$funcionario_id', '$miembro_nombre', '$miembro_apellido', '$rol')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Registro insertado correctamente";
+        } else {
+            echo "Error al insertar el registro: " . $conn->error;
+        }
+    } else {
+        echo "El funcionario con ID $funcionario_id no existe en la tabla funcionarios.";
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Procesar el formulario
+    $funcionario_id = $_POST['funcionario_id'];
+    $miembro_nombre = $_POST['miembro_nombre'];
+    $miembro_apellido = $_POST['miembro_apellido'];
+    $rol = $_POST['rol'];
+
+    insertarGrupoFamiliar($funcionario_id, $miembro_nombre, $miembro_apellido, $rol);
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Funcionarios con Grupo Familiar</title>
+    <title>Formulario Grupos Familiares</title>
+    <!-- Agrega tus estilos CSS si es necesario -->
 </head>
 <body>
- 
 
-    <!-- Mostrar lista de funcionarios con su grupo familiar -->
+<h2>Formulario Grupos Familiares</h2>
 
+<form action="" method="post">
+    <label for="funcionario_id">ID del Funcionario:</label>
+    <input type="text" name="funcionario_id" required><br>
+
+    <label for="miembro_nombre">Nombre del Miembro:</label>
+    <input type="text" name="miembro_nombre" required><br>
+
+    <label for="miembro_apellido">Apellido del Miembro:</label>
+    <input type="text" name="miembro_apellido" required><br>
+
+    <label for="rol">Rol:</label>
+    <input type="text" name="rol" required><br>
+
+    <input type="submit" value="Insertar Grupo Familiar">
+</form>
+
+<!-- Puedes agregar más contenido HTML según sea necesario -->
 
 </body>
 </html>

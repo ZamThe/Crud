@@ -2,6 +2,7 @@
     <title>Formulario de Funcionarios</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
 <?php
 include '../conexion.php';
 
@@ -15,13 +16,15 @@ $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
 $fechaNacimiento = $_POST['fecha_nacimiento'];
 
-$sql = "INSERT INTO funcionarios (TipoIdentificacion, NumeroIdentificacion, Nombres, Apellidos, EstadoCivil, Sexo, Direccion, Telefono, FechaNacimiento)
+$sqlInsert = "INSERT INTO Funcionarios (tipo_identificacion, numero_identificacion, nombres, apellidos, estado_civil, sexo, direccion, telefono, fecha_nacimiento)
         VALUES ('$tipoIdentificacion', '$numeroIdentificacion', '$nombres', '$apellidos', '$estadoCivil', '$sexo', '$direccion', '$telefono', '$fechaNacimiento')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Registro insertado correctamente";$sql = "SELECT * FROM funcionarios";
-    $result = $conn->query($sql);
-    
+if ($conn->query($sqlInsert) === TRUE) {
+    echo "Registro insertado correctamente";
+
+    $sqlSelect = "SELECT * FROM Funcionarios";
+    $result = $conn->query($sqlSelect);
+
     if ($result->num_rows > 0) {
         echo "<table border='1'>
             <tr>
@@ -37,37 +40,32 @@ if ($conn->query($sql) === TRUE) {
                 <th>Fecha Nacimiento</th>
                 <th>Acciones</th>
             </tr>";
-    
+
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
-                <td>{$row['IDFuncionario']}</td>
-                <td>{$row['TipoIdentificacion']}</td>
-                <td>{$row['NumeroIdentificacion']}</td>
-                <td>{$row['Nombres']}</td>
-                <td>{$row['Apellidos']}</td>
-                <td>{$row['EstadoCivil']}</td>
-                <td>{$row['Sexo']}</td>
-                <td>{$row['Direccion']}</td>
-                <td>{$row['Telefono']}</td>
-                <td>{$row['FechaNacimiento']}</td>
+                <td>{$row['id']}</td>
+                <td>{$row['tipo_identificacion']}</td>
+                <td>{$row['numero_identificacion']}</td>
+                <td>{$row['nombres']}</td>
+                <td>{$row['apellidos']}</td>
+                <td>{$row['estado_civil']}</td>
+                <td>{$row['sexo']}</td>
+                <td>{$row['direccion']}</td>
+                <td>{$row['telefono']}</td>
+                <td>{$row['fecha_nacimiento']}</td>
                 <td>
-                    <a href='editar.php?id={$row['IDFuncionario']}'>Editar</a>
-                    <a href='eliminar.php?id={$row['IDFuncionario']}'>Eliminar</a>
+                    <a href='editar.php?id={$row['id']}'>Editar</a>
+                    <a href='eliminar.php?id={$row['id']}'>Eliminar</a>
                 </td>
             </tr>";
         }
-    
+
         echo "</table>";
     } else {
         echo "0 resultados";
     }
-    
-} 
-
-
-
-else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+} else {
+    echo "Error: " . $sqlInsert . "<br>" . $conn->error;
 }
 
 $conn->close();

@@ -4,7 +4,7 @@ include '../conexion.php';
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sql = "DELETE FROM funcionarios WHERE IDFuncionario = $id";
+    $sql = "DELETE FROM funcionarios WHERE id = $id";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: ../index.php");  
