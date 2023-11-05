@@ -1,3 +1,19 @@
+<Html>
+<head>
+    <title>Formulario de Funcionarios</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+    
+<ul class="dropdown">
+    <li class="drop"><a href="../Familia/familia.php">Crea familia</a></li>
+    <li class="drop"><a href="../Grupos/funcionarios.php">Grupo familiar</a></li>
+    <li class="drop"><a href="../Funcionarios/academico.php">Academico</a></li>
+    <li class="drop"><a href="../ver.php">Ver</a></li>
+</ul>
+<h2>Formulario de Funcionarios</h2>
+</body>
+<br>
 <head>
     <title>Formulario de Funcionarios</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">

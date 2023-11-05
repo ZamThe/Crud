@@ -48,8 +48,7 @@ $conn->close();
 <ul class="dropdown">
     <li class="drop"><a href="#">Crea familia</a></li>
     <li class="drop"><a href="../Grupos/funcionarios.php">Funcionarios</a></li>
-    <li class="drop"><a href="Funcionarios/academico.php">Form 2</a></li>
-    <li><a href="#">Salir</a></li>
+    <li><a href="../index.php">Inicio</a></li>
 </ul>   
 
 <h2>Formulario Grupos Familiares</h2>

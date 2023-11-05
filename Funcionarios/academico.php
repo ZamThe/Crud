@@ -8,13 +8,13 @@
 </head>
 <body>
 <ul class="dropdown">
-    <li class="drop"><a href="#">Crea familia</a></li>
+    <li class="drop"><a href="Grupos/funcionarios.php">Crea familia</a></li>
     <li class="drop"><a href="../Grupos/funcionarios.php">Funcionarios</a></li>
-    <li class="drop"><a href="Funcionarios/academico.php">Form 2</a></li>
-    <li><a href="#">Salir</a></li>
+  
+    <li><a href="../index.php">Inicio</a></li>
 </ul>   
 
-<h2>Formulario Información Académica</h2>
+<h2>Formulario Información Académica</h2>   
 
 <form action="insertar_academica.php" method="post">
     <label for="funcionario_id">ID del Funcionario:</label>

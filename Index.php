@@ -8,9 +8,9 @@
 
 <ul class="dropdown">
     <li class="drop"><a href="Familia/familia.php">Crea familia</a></li>
-    <li class="drop"><a href="Grupos/funcionarios.php">Funcionarios</a></li>
+    <li class="drop"><a href="Grupos/funcionarios.php">Grupo familiar</a></li>
     <li class="drop"><a href="Funcionarios/academico.php">Academico</a></li>
-    <li><a href="#">Salir</a></li>
+    <li class="drop"><a href="ver.php">Ver</a></li>
 </ul>
 
 <h2>Formulario de Funcionarios</h2>
